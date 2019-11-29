@@ -1,3 +1,3 @@
 import "./index.scss";
-console.log('login');
-alert();
+
+console.log("in login js")
