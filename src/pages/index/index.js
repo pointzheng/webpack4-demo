@@ -61,8 +61,7 @@ class LayoutMain extends React.Component {
   }
 
   menuCick(data) {
-    // console.dir(data.key);
-    // this.setState({ selectkeys: [data.key + '' ]});
+    this.setState({ selectkeys: [data.key + '' ]});
     // if(data.key <= 10) return window.location.hash = menus[data.key];
   }
 
