@@ -19,34 +19,14 @@ class LayoutMain extends React.Component {
   //let paths = ['article'];
   constructor(props) {
     super(props);
-    //setToken('null')
+
     let token = getToken();
-    // let path = props.location.pathname;
-    // console.dir(menus.map(x => '/' + x));
     let path = "/spot"
     let key = menus.map(x => '/' + x).indexOf("path");
-    let loginPage = false;
-    // if(!token) {
-    //   loginPage = true
-    //   delToken();
-    //   delUserName();
-    // }
-		//
-    // if(getUserName() == 'caiwu' && key != 8) {
-    //   key = 8;
-    //   window.location.hash = 'finance';
-    // }
-    // if(getUserName() == 'yuying' && key == 8) {
-    //   key = 0;
-    // }
-    // if(getUserName() == 'yunying_yonghu' && key != 4) {
-    //   key = 4;
-    //   window.location.hash = 'user';
-    // }
     let username = getUserName();
 
 		username = "admin";
-    this.state = { username, collapsed: false, loginPage, selectkeys: [key > 0 ? key + '' : '0'] };
+    this.state = { username, collapsed: false, selectkeys: [key > 0 ? key + '' : '0'] };
   }
 
 
@@ -89,9 +69,7 @@ class LayoutMain extends React.Component {
   render() {
     const { getFieldDecorator , getFieldsError } = this.props.form;
     let { username } = this.state;
-    let route = routes[0]
 
-    console.log("route is:", route)
     return (
     <Router>
       <Layout style={{ height: '100%'}}>
@@ -104,6 +82,7 @@ class LayoutMain extends React.Component {
             管理后台
           </div>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['0']} selectedKeys={ this.state.selectkeys } onClick={ this.menuCick.bind(this) }>
+            {/*
             <Menu.Item key="0">
               <Icon type="table" />
               <span>按钮1</span>
@@ -111,6 +90,14 @@ class LayoutMain extends React.Component {
             <Menu.Item key={route.key}>
               <Link to={route.link}><Icon type={route.iconType} /><b>{route.text}</b></Link>
             </Menu.Item>
+            */}
+            {
+                    routes.map((route) =>
+                        <Menu.Item key={route.key}>
+                            <Link to={route.link}><Icon type={route.iconType} /><b>{route.text}</b></Link>
+                        </Menu.Item>
+                    )
+                }
           </Menu>
         </Sider>
         <Layout>
@@ -129,8 +116,14 @@ class LayoutMain extends React.Component {
             margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280,
           }}
           >
-            { /*this.props.children*/ }
+            { /*this.props.children
             <Route exact key={route.key} path={route.link} component={route.component}/>
+            */ }
+            {
+                    routes.map((route) =>
+                        <Route exact key={route.key} path={route.link} component={route.component}/>
+                    )
+                }
           </Content>
         </Layout>
       </Layout>
