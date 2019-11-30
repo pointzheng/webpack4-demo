@@ -8,6 +8,8 @@ const htmlWebpackPlugin = require("html-webpack-plugin");
 //静态资源输出
 const copyWebpackPlugin = require("copy-webpack-plugin");
 const rules = require("./webpack.rules.conf.js");
+
+
 // 获取html-webpack-plugin参数的方法
 let getHtmlConfig = function (name, chunks) {
 	return {
@@ -41,7 +43,9 @@ function getEntry(PAGES_DIR) {
 	})
 	return entry;
 }
+
 let entrys = getEntry('./src/pages/')
+
 module.exports = {
 	entry: entrys,
 	module: {
