@@ -17,7 +17,7 @@ const rules = [{
 		]
 	},
 	{
-		test: /\.js$/,
+		test: /\.js|\.jsx$/,
 		use: ["babel-loader"],
 		// 不检查node_modules下的js文件
 		// exclude: "/node_modules/"
