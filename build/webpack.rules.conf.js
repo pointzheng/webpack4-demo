@@ -18,7 +18,22 @@ const rules = [{
 	},
 	{
 		test: /\.js|\.jsx$/,
-		use: ["babel-loader"],
+		use: [{
+			loader: "babel-loader",
+			options: {
+				presets: ['@babel/preset-env'],
+				// presets: [['@babel/preset-env', {
+        //   targets: {
+        //     browsers: ['>1%', 'last 2 versions']
+        //     // chrome: '52'
+        //   }
+        // }]]
+			},
+			// options: {
+			//            presets: ['@babel/preset-env'],
+			//           plugins: [require('@babel/plugin-transform-object-rest-spread')]
+			//         }
+		}],
 		// 不检查node_modules下的js文件
 		// exclude: "/node_modules/"
 	}, {
